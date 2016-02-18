@@ -33,7 +33,7 @@ unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
 
-uint256 hashGenesisBlock("0x0000069cd602a3ac5fd91d9c78c18650aff9f6f42910ed0f31c0d247f5f39664");
+uint256 hashGenesisBlock("0x00000d0299fd7dd7086a10e92ad92c17cccc128b32745dfe35cb63fbc808c97a");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Juwelz: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -850,10 +850,10 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
 	// normal payout
     int64 nSubsidy = 1000 * COIN;
 
-	if(nHeight <= 500)
+	if(nHeight <= 100)
 	{
 		//nSubsidy = 100000000000 * COIN;
-        nSubsidy = 200000000 * COIN;
+        nSubsidy = 1000000 * COIN;
 	}
 
 	return nSubsidy + nFees;
@@ -1959,7 +1959,7 @@ bool LoadBlockIndex(bool fAllowNew)
         pchMessageStart[1] = 0xc3;
         pchMessageStart[2] = 0xb6;
         pchMessageStart[3] = 0xf1;
-        hashGenesisBlock = uint256("0x0000069cd602a3ac5fd91d9c78c18650aff9f6f42910ed0f31c0d247f5f39664");
+        hashGenesisBlock = uint256("0x00000d0299fd7dd7086a10e92ad92c17cccc128b32745dfe35cb63fbc808c97a");
     }
 
     //
@@ -1979,7 +1979,7 @@ bool LoadBlockIndex(bool fAllowNew)
             return false;
 
         // Genesis block
-        const char* pszTimestamp = "In February 5, 2016, Five planets align in spectacular celestial show. 1454971508.";
+        const char* pszTimestamp = "In February 5, 2016, Five planets align in spectacular celestial show. 1455754094.";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -1991,9 +1991,9 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1454971508;
+        block.nTime    = 1455754094;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 109073;
+        block.nNonce   = 1124145;
 
 		if (fTestNet)
         {
@@ -2019,7 +2019,7 @@ bool LoadBlockIndex(bool fAllowNew)
         //// debug print
         printf("block.GetHash() = %s\n", block.GetHash().ToString().c_str());
         printf("block.hashMerkleRoot = %s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x7f79cc0d45bba9388c6fa763f3124c9a845015afc384aa5732eb46125a650c6b"));
+        assert(block.hashMerkleRoot == uint256("0xf2e36bda551c221a8275efe6b4bb03bc81773846bfe4a7850ed8ae1df5cd93d9"));
 
         block.print();
         assert(block.GetHash() == hashGenesisBlock);

@@ -35,7 +35,7 @@ static const unsigned int MAX_TX_COMMENT_LEN = 140; // Florincoin: 128 bytes + l
 
 static const int64 MIN_TX_FEE = 1000000;
 static const int64 MIN_RELAY_TX_FEE = MIN_TX_FEE;
-static const int64 MAX_MONEY = 320000000 * COIN; // Juwelz: maximum of 320M coins 
+static const int64 MAX_MONEY = 300000000 * COIN; // Juwelz: maximum of 300M coins 
 static const int64 CIRCULATION_MONEY = MAX_MONEY;
 static const double TAX_PERCENTAGE = 0.02;
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
